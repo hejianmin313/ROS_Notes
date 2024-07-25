@@ -18,7 +18,7 @@ Communication Configure or we don't know how to distinguish bits without clock p
 * start and stop bits
     the signals are usually high so the first LOW is the start bit
     after counting 8 bits, then stop bit
-![UART.png](./UART.png)
+![UART.png](../res/UART.png)
 
 ## I2C 
 Inter-integrated Circuit is a synchronous, multi-master, multi-slave, packet-switched, single end-end, serial computer bus invented by Philips Semiconductor; It is widely used for attaching lower-speed peripheral to processors and micro-controllers in short-distance.
@@ -31,13 +31,13 @@ we need to specify the data length and frequency
 * data length-usually 16 bits
 * frequency-400kilobits per second
 
-![I2C](./I2C.png)
+![I2C](../res/I2C.png)
  
 At first Master will send the specific Slave Address, only the Slave will store the data into the buffer; So one transmitter and multi-receiver
 
 ## SPI 
 Serial Peripheral Interface
-![SPI](./SPI.png)
+![SPI](../res/SPI.png)
 MOSI-Master output Slave input
 
 MISO-Master input Slave output
@@ -46,7 +46,7 @@ $\bar{SS}$ -chip select, set it low to enable data transmission
 
 The advantage of SPI is that we can both transmit and receive data between master and slave.
 
-![Summary](./UART_I2C_SPI.png)
+![Summary](../res/UART_I2C_SPI.png)
 
 No Acknowledge means even there is no slave, the master still send the data;
 
@@ -64,8 +64,8 @@ In a Network, we have multiple devices connected together
 * CRC(Cyclic reboundary check)
 
 CAN has two pins CAN-High and CAN-Low
-![CAN_Bus](./CAN_Bus.png)
+![CAN_Bus](../res/CAN_Bus.png)
 
 CAN use the difference between CANH and CANL to eliminate the noise
 
-![CAN_Differ](./CAN_Differ.png)
+![CAN_Differ](../res/CAN_Differ.png)
