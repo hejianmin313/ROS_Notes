@@ -26,7 +26,9 @@ extern Robot_t Robot;
 	Robot.Theta; //float 类型，表示车体坐标系相对于世界坐标系的旋转角度（弧度制），俯视逆时针为正，范围在(-PI,PI]之间 。
 	根据任务要求选取并使用上述变量。
 */
-
+const float D = 152.5;//mm Mecanum wheel's D
+const float L = 500;//mm the length of the robot
+const float W = 450; //mm the width of the robot
 
 //	p.s.如果觉得有必要可以在此处声明所需变量。 
 
@@ -48,11 +50,14 @@ static void prvSetMotorSpeed(float *MotorSpeed);
 void vChassisMotionCalculation(float *Vel, float *Dir, float *Omega);
 {
 	float MotorSpeed[4] = {0,0,0,0};
-	/*
-	
-		Write your code here.
-	
-	*/
+	float v_x = vel* arm_cos_f32(Dir);
+	float v_y = vel* arm_sin_f32(Dir);
+
+	MotorSpeed[0] = (2.0/D) * (v_x-v_y-(L+W)/2*Omega);
+	MotorSpeed[1] = (2.0/D) * (v_x+v_y+(L+W)/2*Omega);
+	MotorSpeed[2] = (2.0/D) * (v_x+v_y-(L+W)/2*Omega);
+	MotorSpeed[3] = (2.0/D) * (v_x-v_y-(L+W)/2*Omega);
+
 	prvSetMotorSpeed(MotorSpeed); //调用私有函数，传入解算后四个轮子的转速[rad/s]。 
 }
 
